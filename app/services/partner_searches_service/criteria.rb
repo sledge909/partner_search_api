@@ -5,10 +5,11 @@ class PartnerSearchesService
     include Validation
     include Structural::Model
 
-    field :material
     field :address
-    field :square_meters, type: Integer
+    field :material
     field :phone_number
+    field :service
+    field :square_meters, type: Integer
 
     def self.create!(params)
       new(params).tap(&:validate!)

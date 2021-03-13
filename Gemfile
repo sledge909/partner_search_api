@@ -7,6 +7,7 @@ source 'https://rubygems.org' do
   gem 'sqlite3', '~> 1.4'
 
   group :development, :test do
+    gem 'factory_bot_rails'
     gem 'pry'
     gem 'rspec-rails'
   end

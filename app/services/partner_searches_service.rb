@@ -28,7 +28,7 @@ class PartnerSearchesService
   end
 
   def partners
-
+    Partner.by_service_and_skill(criteria)
   end
 
 end

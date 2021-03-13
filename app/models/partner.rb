@@ -4,5 +4,18 @@ class Partner < ApplicationRecord
   has_many :partner_skills
   has_many :skills, through: :partner_skills
 
+  def self.by_service(param)
+    joins(:services).where(services: {name: param})
+  end
+
+  def self.by_material(param)
+    joins(:skills).where(skills: {name: param})
+  end
+
+  def self.by_service_and_skill(criteria)
+    joins(:services).where(services: { name: criteria.service })
+      .joins(:skills).where(skills: { name: criteria.material })
+  end
+
 
 end
