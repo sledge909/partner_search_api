@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_164510) do
+ActiveRecord::Schema.define(version: 2021_03_07_171715) do
+
+  create_table "partner_services", force: :cascade do |t|
+    t.integer "partner_id"
+    t.integer "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["partner_id"], name: "index_partner_services_on_partner_id"
+    t.index ["service_id"], name: "index_partner_services_on_service_id"
+  end
+
+  create_table "partner_skills", force: :cascade do |t|
+    t.integer "partner_id"
+    t.integer "skill_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["partner_id"], name: "index_partner_skills_on_partner_id"
+    t.index ["skill_id"], name: "index_partner_skills_on_skill_id"
+  end
 
   create_table "partners", force: :cascade do |t|
     t.string "name", null: false
