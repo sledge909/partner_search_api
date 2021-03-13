@@ -1,4 +1,4 @@
-class PartnerSearchService
+class PartnerSearchesService
   attr_reader :params
   private :params
 
@@ -19,13 +19,11 @@ class PartnerSearchService
 
   private
 
-def criteria
-  @criteria ||= Criteria.create!(params)
-end
+  def criteria
+    @criteria ||= Criteria.create!(params)
+  end
 
-def serialized_partners
+  def serialized_partners
 
-end
-
-
+  end
 end

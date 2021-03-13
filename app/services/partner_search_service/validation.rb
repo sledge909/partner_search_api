@@ -2,16 +2,16 @@ class PartnerSearchService
   module Validation
     def validate!
       validate_material!
-      validate_address!
-      validate_square_meters!
-      validate_phone_number!
+      # validate_address!
+      # validate_square_meters!
+      # validate_phone_number!
     end
 
     def valid_materials
       %w[wood carpet tiles]
     end
 
-    def validate_material
+    def validate_material!
       raise_bad_request(:material) unless valid_material?
     end
 

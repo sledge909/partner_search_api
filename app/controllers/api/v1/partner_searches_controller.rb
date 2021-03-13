@@ -1,7 +1,7 @@
 class Api::V1::PartnerSearchesController < ApplicationController
 
   def index
-    render json: PartnerSearchService.search(params)
+    render json: PartnerSearchesService.search(params)
   end
 
   def show
