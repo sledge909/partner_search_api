@@ -1,4 +1,4 @@
 class Service < ApplicationRecord
   has_many :skills
-  belongs_to :partner
+  has_many :partners, through: :partner_services
 end
