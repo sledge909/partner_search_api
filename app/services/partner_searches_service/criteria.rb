@@ -1,4 +1,4 @@
-class PartnerSearchService
+class PartnerSearchesService
   class Criteria
     include Validation
     attr_reader :params

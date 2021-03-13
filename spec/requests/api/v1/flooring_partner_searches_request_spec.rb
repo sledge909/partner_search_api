@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Api::V1::PartnerSearches", type: :request do
-  describe '/api/v1/partner_searches' do
-    subject { get '/api/v1/partner_searches', params: params }
+RSpec.describe "Api::V1::FlooringPartnerSearches", type: :request do
+  describe '/api/v1/flooring_partner_searches' do
+    subject { get '/api/v1/flooring_partner_searches', params: params }
     let(:parsed_response) { JSON.parse(response.body) }
 
     let(:params) do

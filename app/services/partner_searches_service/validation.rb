@@ -1,4 +1,4 @@
-class PartnerSearchService
+class PartnerSearchesService
   module Validation
     def validate!
       validate_material!
