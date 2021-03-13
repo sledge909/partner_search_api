@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_164803) do
+ActiveRecord::Schema.define(version: 2021_03_07_164510) do
 
   create_table "partners", force: :cascade do |t|
-    t.boolean "flooring", default: false, null: false
+    t.string "name", null: false
     t.string "address", null: false
     t.integer "operating_radius", null: false
     t.integer "rating", null: false
@@ -21,4 +21,27 @@ ActiveRecord::Schema.define(version: 2021_03_06_164803) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "services", force: :cascade do |t|
+    t.integer "partner_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["partner_id"], name: "index_services_on_partner_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.integer "service_id", null: false
+    t.integer "partner_id", null: false
+    t.boolean "wood", default: false, null: false
+    t.boolean "carpet", default: false, null: false
+    t.boolean "tile", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["partner_id"], name: "index_skills_on_partner_id"
+    t.index ["service_id"], name: "index_skills_on_service_id"
+  end
+
+  add_foreign_key "services", "partners"
+  add_foreign_key "skills", "partners"
+  add_foreign_key "skills", "services"
 end
