@@ -5,9 +5,13 @@ FactoryBot.define do
     operating_radius { 5 }
     rating { 5 }
 
-    after(:create) do |partner|
-      partner.services << FactoryBot.create(:service)
-      partner.skills << FactoryBot.create(:skill, service: Service.last)
+    trait :with_flooring_services do
+      name { 'Flooring Co' }
+
+      after(:create) do |partner|
+        partner.services << FactoryBot.create(:service)
+        partner.skills << FactoryBot.create(:skill, service: Service.last)
+      end
     end
   end
 end
