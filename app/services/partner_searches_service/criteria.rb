@@ -1,12 +1,14 @@
+require 'structural'
+
 class PartnerSearchesService
   class Criteria
     include Validation
-    attr_reader :params
-    private :params
+    include Structural::Model
 
-    def initialize(params)
-      @params = params
-    end
+    field :material
+    field :address
+    field :square_meters, type: Integer
+    field :phone_number
 
     def self.create!(params)
       new(params).tap(&:validate!)

@@ -16,12 +16,12 @@ class PartnerSearchesService
     end
 
     def valid_material?
-      valid_materials.include?(params.fetch(:material))
+      valid_materials.include?(material)
     end
 
     def raise_bad_request(field_name, message = '')
       fail ActionController::BadRequest,
-        "Invalid parameter '#{field_name}' with value '#{params.fetch(:material)}'. #{message}"
+        "Invalid parameter '#{field_name}' with value '#{data[field_name]}'. #{message}"
     end
 
   end
