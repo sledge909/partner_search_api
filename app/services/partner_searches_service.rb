@@ -28,7 +28,7 @@ class PartnerSearchesService
   end
 
   def partners
-
+    
   end
 
 end
