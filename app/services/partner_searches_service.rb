@@ -13,7 +13,7 @@ class PartnerSearchesService
   def search
     {
       criteria: criteria,
-      partners: 'serialized_partners',
+      partners: serialized_partners,
     }
   end
 
@@ -24,11 +24,11 @@ class PartnerSearchesService
   end
 
   def serialized_partners
-    PartnerSerializer.for(partners)
+    []
   end
 
   def partners
-    
+
   end
 
 end
