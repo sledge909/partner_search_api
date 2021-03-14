@@ -6,7 +6,7 @@ class PartnerSearchesService
     include Structural::Model
 
     field :address
-    field :material
+    field :material, default: []
     field :phone_number
     field :service
     field :square_meters, type: Integer

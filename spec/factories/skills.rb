@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :skill do
-    service
     name { 'wood' }
+
+    trait :carpet do
+      name { 'carpet' }
+    end
   end
 end

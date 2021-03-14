@@ -5,12 +5,19 @@ FactoryBot.define do
     operating_radius { 5 }
     rating { 5 }
 
-    trait :with_flooring_services do
-      name { 'Flooring Co' }
+    trait :with_wood_skills do
+      name { 'Wood Co' }
 
       after(:create) do |partner|
-        partner.services << FactoryBot.create(:service)
-        partner.skills << FactoryBot.create(:skill, service: Service.last)
+        partner.skills << FactoryBot.create(:skill, service: FactoryBot.create(:service))
+      end
+    end
+
+    trait :with_carpet_skills do
+      name { 'Carpet Co' }
+
+      after(:create) do |partner|
+        partner.skills << FactoryBot.create(:skill, :carpet, service: FactoryBot.create(:service))
       end
     end
   end
