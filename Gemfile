@@ -2,6 +2,7 @@ source 'https://rubygems.org' do
 
   ruby '2.6.3'
   gem 'bootsnap', '>= 1.4.2', require: false
+  gem 'geocoder', '~> 1.3', '>= 1.3.7'
   gem 'puma', '~> 4.1'
   gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
   gem 'sqlite3', '~> 1.4'

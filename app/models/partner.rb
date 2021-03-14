@@ -1,4 +1,7 @@
 class Partner < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode
+
   has_many :partner_services, dependent: :destroy
   has_many :services, through: :partner_services
   has_many :partner_skills, dependent: :destroy
@@ -8,5 +11,4 @@ class Partner < ApplicationRecord
     joins(:services).where(services: { name: criteria.service })
       .joins(:skills).where(skills: { name: [criteria.material] })
   end
-
 end
