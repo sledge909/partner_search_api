@@ -16,7 +16,7 @@ RSpec.describe "Api::V1::FlooringPartners", type: :request do
         }
       end
 
-      let(:material) { 'wood' }
+      let(:material) { ['wood', 'carpet'] }
       let(:address) { '53.44007105883605, -2.27959018591222' }
       let(:square_meters) { '10' }
       let(:phone_number) { '07494451935' }
@@ -32,7 +32,7 @@ RSpec.describe "Api::V1::FlooringPartners", type: :request do
       end
 
       context 'when invalid params are sent' do
-        let(:material) { 'grass' }
+        let(:material) { ['grass'] }
 
         it 'raises an argument error' do
           expect { subject }.to raise_error(

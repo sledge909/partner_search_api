@@ -14,7 +14,7 @@ RSpec.describe PartnersSearchService::Criteria do
     }
   end
 
-  let(:material) { 'wood' }
+  let(:material) { ['wood'] }
   let(:address) { '53.44007105883605,-2.27959018591222' }
   let(:square_meters) { '10' }
   let(:phone_number) { '07494451935' }
@@ -37,7 +37,12 @@ RSpec.describe PartnersSearchService::Criteria do
     subject { criteria.tap(&:validate!) }
 
     context 'validate material' do
-      context 'at least one material' do
+      context 'when at least one material' do
+        it { is_expected.to eq(criteria) }
+      end
+
+      context 'when more than one material' do
+        let(:material) { ['wood', 'carpet'] }
         it { is_expected.to eq(criteria) }
       end
 

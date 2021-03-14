@@ -14,7 +14,7 @@ class Partner < ApplicationRecord
   scope :by_service_and_skill, ->(criteria) do
     joins(:services).where(services: { name: criteria.service })
       .joins(:skills).where(skills: { name: [criteria.material] })
-      .order('rating desc')
+      .order('rating desc').distinct
   end
 
   def self.search(criteria)
@@ -30,6 +30,6 @@ class Partner < ApplicationRecord
   private
 
   def distance(latitude, longitude)
-    @distance_from_customer ||= distance_from([latitude, longitude])
+    @distance_from_customer ||= distance_from([latitude, longitude]).round(2)
   end
 end

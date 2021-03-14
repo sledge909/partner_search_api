@@ -12,7 +12,7 @@ class PartnersSearchService
     end
 
     def valid_material?
-      valid_materials.include?(material)
+      (valid_materials & material).any?
     end
 
     def validate_material!
