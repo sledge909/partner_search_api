@@ -11,7 +11,7 @@ class Partner < ApplicationRecord
 
   validates :name, :operating_radius, :rating, :address, presence: true
 
-  def self.by_service_and_skill(criteria)
+  scope :by_service_and_skill, ->(criteria) do
     joins(:services).where(services: { name: criteria.service })
       .joins(:skills).where(skills: { name: [criteria.material] })
       .order('rating desc')
@@ -28,7 +28,7 @@ class Partner < ApplicationRecord
   end
 
   private
-  
+
   def distance(latitude, longitude)
     @distance_from_customer ||= distance_from([latitude, longitude])
   end
