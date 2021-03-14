@@ -36,61 +36,53 @@ RSpec.describe PartnersSearchService::Criteria do
   describe '#validate!' do
     subject { criteria.tap(&:validate!) }
 
-    context 'validate material' do
-      context 'when at least one material' do
-        it { is_expected.to eq(criteria) }
-      end
+    context 'when one material' do
+      it { is_expected.to eq(criteria) }
+    end
 
-      context 'when more than one material' do
-        let(:material) { ['wood', 'carpet'] }
-        it { is_expected.to eq(criteria) }
-      end
+    context 'when more than one material' do
+      let(:material) { ['wood', 'carpet'] }
+      it { is_expected.to eq(criteria) }
+    end
 
-      context 'no materials' do
-        let(:material) { [] }
+    context 'when no materials' do
+      let(:material) { [] }
 
-        it 'raises error' do
-          expect { subject }.to raise_error(ActionController::BadRequest)
-        end
+      it 'raises error' do
+        expect { subject }.to raise_error(ActionController::BadRequest)
       end
     end
 
-    context 'validate address' do
-      context 'when address is present' do
-        it { is_expected.to eq(criteria) }
-      end
+    context 'when address is present' do
+      it { is_expected.to eq(criteria) }
+    end
 
-      context 'when address is not present' do
-        let(:address) { '' }
-        it 'raises error' do
-          expect { subject }.to raise_error(ActionController::BadRequest)
-        end
+    context 'when address is not present' do
+      let(:address) { '' }
+      it 'raises error' do
+        expect { subject }.to raise_error(ActionController::BadRequest)
       end
     end
 
-    context 'validate square meters' do
-      context 'when square meters is present' do
-        it { is_expected.to eq(criteria) }
-      end
+    context 'when square meters is present' do
+      it { is_expected.to eq(criteria) }
+    end
 
-      context 'when square meters is not present' do
-        let(:square_meters) { 0 }
-        it 'raises error' do
-          expect { subject }.to raise_error(ActionController::BadRequest)
-        end
+    context 'when square meters is not present' do
+      let(:square_meters) { 0 }
+      it 'raises error' do
+        expect { subject }.to raise_error(ActionController::BadRequest)
       end
     end
 
-    context 'validate phone number' do
-      context 'when phone number is present' do
-        it { is_expected.to eq(criteria) }
-      end
+    context 'when phone number is present' do
+      it { is_expected.to eq(criteria) }
+    end
 
-      context 'when phone number is not present' do
-        let(:square_meters) { 0 }
-        it 'raises error' do
-          expect { subject }.to raise_error(ActionController::BadRequest)
-        end
+    context 'when phone number is not present' do
+      let(:square_meters) { 0 }
+      it 'raises error' do
+        expect { subject }.to raise_error(ActionController::BadRequest)
       end
     end
   end

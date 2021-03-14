@@ -63,9 +63,7 @@ RSpec.describe PartnersSearchService do
   end
 
   let(:ordered_partners) do
-    [
-      partner
-    ]
+    partners
   end
 
   let(:expected_response) do

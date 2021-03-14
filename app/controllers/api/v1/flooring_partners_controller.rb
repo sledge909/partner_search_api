@@ -10,8 +10,12 @@ class Api::V1::FlooringPartnersController < ApplicationController
 
   private
 
+  def permitted_params
+    params.permit(:address, :square_meters, :phone_number, material: [])
+  end
+
   def adapted_params
-    params.merge(service: 'flooring')
+    permitted_params.merge(service: 'flooring')
   end
 
   def id

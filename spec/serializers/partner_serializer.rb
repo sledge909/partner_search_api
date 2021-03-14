@@ -53,7 +53,7 @@ RSpec.describe PartnerSerializer do
       ]
     end
 
-    it 'returns a PartnerSerializer for each partner' do
+    it 'serializes each partner' do
       expect(subject).to eq(serialized_partners)
     end
   end
