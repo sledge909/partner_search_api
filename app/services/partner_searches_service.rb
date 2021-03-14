@@ -38,7 +38,6 @@ class PartnerSearchesService
   end
 
   def sorted_partners
-    binding.pry
     partners_within_radius.sort_by {|partner| [partner.distance_from_customer, partner.rating] }
   end
 
