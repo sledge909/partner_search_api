@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :partner do
     name { 'Flooring Ltd' }
-    address { '1 Acres Road' }
+    address { '3 Acres Road, Manchester, M21 9EB' }
     operating_radius { 5 }
     rating { 5 }
+
 
     trait :with_wood_skills do
       name { 'Wood Co' }

@@ -14,5 +14,13 @@ class PartnerSearchesService
     def self.create!(params)
       new(params).tap(&:validate!)
     end
+
+    def latitude
+      address.split(',').first
+    end
+
+    def longitude
+      address.split(',').last
+    end
   end
 end

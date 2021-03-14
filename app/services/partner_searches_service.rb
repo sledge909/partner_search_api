@@ -24,11 +24,16 @@ class PartnerSearchesService
   end
 
   def serialized_partners
-    []
+    partners_within_radius
   end
 
   def partners
     Partner.by_service_and_skill(criteria)
   end
 
+  def partners_within_radius
+    partners.select do |partner|
+      partner.within_operating_radius?(criteria.latitude, criteria.longitude)
+    end
+  end
 end
