@@ -32,7 +32,7 @@ FactoryBot.define do
       after(:create) do |partner|
         service = Service.find_or_create_by(name: 'flooring')
         partner.services << service
-        partner.skills << FactoryBot.create(:skill, :tile, service: service)
+        partner.skills << FactoryBot.create(:skill, :tiles, service: service)
       end
     end
   end

@@ -5,7 +5,7 @@ class Api::V1::FlooringPartnersController < ApplicationController
   end
 
   def show
-
+    render json: Partner.find(id)
   end
 
   private
@@ -14,4 +14,7 @@ class Api::V1::FlooringPartnersController < ApplicationController
     params.merge(service: 'flooring')
   end
 
+  def id
+    params.require(:id)
+  end
 end
