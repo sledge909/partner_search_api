@@ -28,9 +28,7 @@ class PartnersSearchService
   end
 
   def ordered_partners
-    partners.sort_by do |partner|
-      [partner.distance_from_customer, partner.rating]
-    end
+    Ordering.order(partners)
   end
 
   def partners
