@@ -8,7 +8,7 @@
 ## Starting the application
 
     $ bundle install
-    $ rake db:setup (this will seed the database with 5 Partners)
+    $ rake db:setup (this will seed the database with five Partners)
 
 ## Then to run the app
 
@@ -21,6 +21,8 @@ This application uses `RSpec` to test.
     $ bundle exec rspec
 
 ## Endpoints and Example Requests
+
+There will be five Partners in the database. Four of these are within close proximity of the address in the example request, one of them is far away.
 
 Flooring Partners Search - `/api/v1/flooring_partners`
 

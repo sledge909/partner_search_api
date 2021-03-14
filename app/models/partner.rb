@@ -2,7 +2,7 @@ class Partner < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  attr_accessor :distance_from_customer
+  attr_reader :distance_from_customer
 
   has_many :partner_services, dependent: :destroy
   has_many :services, through: :partner_services

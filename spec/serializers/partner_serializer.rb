@@ -10,6 +10,7 @@ RSpec.describe PartnerSerializer do
       Partner,
       name: 'Flooring Co',
       operating_radius: 5,
+      distance_from_customer: 1,
       rating: 5,
       address: '3 Acres Road, Manchester, M21 9EB',
     )
@@ -21,10 +22,39 @@ RSpec.describe PartnerSerializer do
     it 'returns a hash of partner details' do
       expect(subject).to eq(
         name: 'Flooring Co',
+        address: '3 Acres Road, Manchester, M21 9EB',
+        distance_from_customer: 1,
         operating_radius: 5,
         rating: 5,
-        address: '3 Acres Road, Manchester, M21 9EB',
       )
+    end
+  end
+
+  describe '.serialize' do
+    subject { PartnerSerializer.serialize(ordered_partners) }
+
+    let(:ordered_partners) { [partner, partner] }
+    let(:serialized_partners) do
+      [
+        {
+          name: 'Flooring Co',
+          address: '3 Acres Road, Manchester, M21 9EB',
+          distance_from_customer: 1,
+          operating_radius: 5,
+          rating: 5,
+        },
+        {
+          name: 'Flooring Co',
+          address: '3 Acres Road, Manchester, M21 9EB',
+          distance_from_customer: 1,
+          operating_radius: 5,
+          rating: 5,
+        }
+      ]
+    end
+
+    it 'returns a PartnerSerializer for each partner' do
+      expect(subject).to eq(serialized_partners)
     end
   end
 end
