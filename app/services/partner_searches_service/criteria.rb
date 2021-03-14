@@ -20,7 +20,7 @@ class PartnerSearchesService
     end
 
     def longitude
-      address.split(',').last
+      address.split(',').last.strip
     end
   end
 end

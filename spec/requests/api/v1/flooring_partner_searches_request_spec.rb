@@ -15,9 +15,9 @@ RSpec.describe "Api::V1::FlooringPartnerSearches", type: :request do
     end
 
     let(:material) { 'wood' }
-    let(:address) { '1 Acres Road' }
+    let(:address) { '53.44007105883605, -2.27959018591222' }
     let(:square_meters) { '10' }
-    let(:phone_number) { '07494 451 935' }
+    let(:phone_number) { '07494451935' }
 
     it 'returns a successful status' do
       subject
