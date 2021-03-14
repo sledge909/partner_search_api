@@ -6,14 +6,17 @@ class PartnerSerializer
     @partner = partner
   end
 
-  def self.for(partners)
-    partners.map { |partner| new(partner) }
+  def self.serialize(partner)
+    new(partner).serialize
   end
 
-  def as_json(_options = nil)
+  def serialize
     {
-      partner: 'partner data',
+      name: partner.name,
+      address: partner.address,
+      distance_from_customer: partner.distance_from_customer,
+      operating_radius: partner.operating_radius,
+      rating: partner.rating,
     }
   end
-
 end

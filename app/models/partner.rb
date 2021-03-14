@@ -1,8 +1,8 @@
 class Partner < ApplicationRecord
-  DEFAULT_WITHIN = 50
-
   geocoded_by :address
   after_validation :geocode
+
+  attr_accessor :distance_from_customer
 
   has_many :partner_services, dependent: :destroy
   has_many :services, through: :partner_services
@@ -14,9 +14,16 @@ class Partner < ApplicationRecord
   def self.by_service_and_skill(criteria)
     joins(:services).where(services: { name: criteria.service })
       .joins(:skills).where(skills: { name: [criteria.material] })
+      .order('rating desc')
   end
 
   def within_operating_radius?(latitude, longitude)
-    distance_from([latitude, longitude]) <= operating_radius
+    distance(latitude, longitude) <= operating_radius
+  end
+
+  private
+
+  def distance(latitude, longitude)
+    @distance_from_customer ||= distance_from([latitude, longitude])
   end
 end

@@ -7,7 +7,7 @@ partner = Partner.create!(name: 'Best Flooring', address: '1 Acres Road, Manches
 partner.services << service
 partner.skills. << wood
 
-partner2 = Partner.create!(name: 'The Flooring Co', address: '35 Acres Road, Manchester, M21 9EB', operating_radius: 10, rating: 6)
+partner2 = Partner.create!(name: 'The Flooring Co', address: '374-376 Barlow Moor Rd, Manchester, M21 8AZ', operating_radius: 10, rating: 6)
 partner2.services << service
 partner2.skills << [wood, carpet]
 
