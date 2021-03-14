@@ -14,7 +14,7 @@ RSpec.describe Partner, type: :model do
 
   let(:criteria) do
     instance_double(
-      PartnerSearchesService::Criteria,
+      PartnersSearchService::Criteria,
       material: material,
       latitude: latitude,
       longitude: longitude,

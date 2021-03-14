@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PartnerSearchesService::Criteria do
+RSpec.describe PartnersSearchService::Criteria do
   let(:criteria) do
-    PartnerSearchesService::Criteria.create!(params)
+    PartnersSearchService::Criteria.create!(params)
   end
 
   let(:params) do

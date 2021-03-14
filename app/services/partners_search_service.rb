@@ -1,4 +1,4 @@
-class PartnerSearchesService
+class PartnersSearchService
   attr_reader :params
   private :params
 
@@ -24,13 +24,7 @@ class PartnerSearchesService
   end
 
   def serialized_partners
-    ordered_partners.map do |partner|
-      partner_serializer.serialize(partner)
-    end
-  end
-
-  def partner_serializer
-    PartnerSerializer
+    PartnerSerializer.serialize(ordered_partners)
   end
 
   def ordered_partners

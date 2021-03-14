@@ -1,6 +1,6 @@
 require 'structural'
 
-class PartnerSearchesService
+class PartnersSearchService
   class Criteria
     include Validation
     include Structural::Model

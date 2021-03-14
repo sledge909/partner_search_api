@@ -6,8 +6,8 @@ class PartnerSerializer
     @partner = partner
   end
 
-  def self.serialize(partner)
-    new(partner).serialize
+  def self.serialize(ordered_partners)
+    ordered_partners.map { |partner| new(partner).serialize }
   end
 
   def serialize
