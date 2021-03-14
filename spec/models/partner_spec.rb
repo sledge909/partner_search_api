@@ -5,28 +5,32 @@ RSpec.describe Partner, type: :model do
     expect(subject).to be_a(Partner)
   end
 
-  let!(:partner) { create(:partner, :with_wood_skills, services: [service]) }
-  let!(:partner2) { create(:partner, :with_carpet_skills, services: [service]) }
   let(:service) { create(:service) }
+  let!(:partner) { create(:partner, :with_wood_skills) }
+  let!(:partner2) { create(:partner, :with_carpet_skills) }
   let(:material) { ['wood'] }
+  let(:latitude) { '53.43954955159376' }
+  let(:longitude) { '-2.2797390705679983' }
 
   let(:criteria) do
     instance_double(
       PartnerSearchesService::Criteria,
       material: material,
+      latitude: latitude,
+      longitude: longitude,
       service: service.name,
     )
   end
 
-  describe '.by_service_and_skill' do
-    subject { Partner.by_service_and_skill(criteria) }
+  describe '.search' do
+    subject { Partner.search(criteria) }
 
-    it 'returns all partners for a given service and material' do
+    it 'returns all partners for the given criteria' do
       expect(subject).to eq([partner])
     end
 
     context 'when a combination of materials is requested' do
-      let(:partner2) { create(:partner, :with_carpet_skills, services: [service]) }
+      let!(:partner3) { create(:partner, :with_tile_skills) }
       let(:material) { ['wood', 'carpet'] }
 
       it 'returns all partners with skills in those materials' do
@@ -35,17 +39,14 @@ RSpec.describe Partner, type: :model do
     end
   end
 
-  describe '#check_operating_radius' do
+  describe '#within_operating_radius' do
     subject { partner.within_operating_radius?(latitude, longitude) }
 
-    let(:latitude) { '53.4395239881789' }
-    let(:longitude) { '-2.279771257076178' }
-
-    it 'returns true if client is within their operating radius' do
+    it 'returns true if client is within the operating radius' do
       expect(subject).to be_truthy
     end
 
-    context "when client is outside of the partner's operating radius" do
+    context 'when client is outside of the operating radius' do
       let(:latitude) { '51.55223645852829' }
       let(:longitude) { '-0.042137970623211125' }
 

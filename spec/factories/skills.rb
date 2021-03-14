@@ -5,5 +5,9 @@ FactoryBot.define do
     trait :carpet do
       name { 'carpet' }
     end
+
+    trait :tile do
+      name { 'tile' }
+    end
   end
 end

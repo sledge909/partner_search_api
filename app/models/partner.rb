@@ -17,7 +17,7 @@ class Partner < ApplicationRecord
       .order('rating desc')
   end
 
-  def self.within_radius(criteria)
+  def self.search(criteria)
     by_service_and_skill(criteria).select do |partner|
       partner.within_operating_radius?(criteria.latitude, criteria.longitude)
     end

@@ -10,7 +10,9 @@ FactoryBot.define do
       name { 'Wood Co' }
 
       after(:create) do |partner|
-        partner.skills << FactoryBot.create(:skill, service: FactoryBot.create(:service))
+        service = Service.find_or_create_by(name: 'flooring')
+        partner.services << service
+        partner.skills << FactoryBot.create(:skill, service: service)
       end
     end
 
@@ -18,7 +20,19 @@ FactoryBot.define do
       name { 'Carpet Co' }
 
       after(:create) do |partner|
-        partner.skills << FactoryBot.create(:skill, :carpet, service: FactoryBot.create(:service))
+        service = Service.find_or_create_by(name: 'flooring')
+        partner.services << service
+        partner.skills << FactoryBot.create(:skill, :carpet, service: service)
+      end
+    end
+
+    trait :with_tile_skills do
+      name { 'Tile Co' }
+
+      after(:create) do |partner|
+        service = Service.find_or_create_by(name: 'flooring')
+        partner.services << service
+        partner.skills << FactoryBot.create(:skill, :tile, service: service)
       end
     end
   end

@@ -24,7 +24,7 @@ class PartnerSearchesService
   end
 
   def serialized_partners
-    sorted_partners.map do |partner|
+    ordered_partners.map do |partner|
       partner_serializer.serialize(partner)
     end
   end
@@ -33,13 +33,13 @@ class PartnerSearchesService
     PartnerSerializer
   end
 
-  def sorted_partners
-    partners_within_radius.sort_by do |partner|
+  def ordered_partners
+    partners.sort_by do |partner|
       [partner.distance_from_customer, partner.rating]
     end
   end
 
-  def partners_within_radius
-    Partner.within_radius(criteria)
+  def partners
+    Partner.search(criteria)
   end
 end
