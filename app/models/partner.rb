@@ -17,12 +17,18 @@ class Partner < ApplicationRecord
       .order('rating desc')
   end
 
+  def self.within_radius(criteria)
+    by_service_and_skill(criteria).select do |partner|
+      partner.within_operating_radius?(criteria.latitude, criteria.longitude)
+    end
+  end
+
   def within_operating_radius?(latitude, longitude)
     distance(latitude, longitude) <= operating_radius
   end
 
   private
-
+  
   def distance(latitude, longitude)
     @distance_from_customer ||= distance_from([latitude, longitude])
   end

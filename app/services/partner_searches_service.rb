@@ -33,17 +33,13 @@ class PartnerSearchesService
     PartnerSerializer
   end
 
-  def partners
-    Partner.by_service_and_skill(criteria)
-  end
-
   def sorted_partners
-    partners_within_radius.sort_by {|partner| [partner.distance_from_customer, partner.rating] }
+    partners_within_radius.sort_by do |partner|
+      [partner.distance_from_customer, partner.rating]
+    end
   end
 
   def partners_within_radius
-    partners.select do |partner|
-      partner.within_operating_radius?(criteria.latitude, criteria.longitude)
-    end
+    Partner.within_radius(criteria)
   end
 end
